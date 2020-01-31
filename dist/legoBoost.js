@@ -1,9 +1,10 @@
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -533,6 +534,17 @@ var LegoBoost = /** @class */ (function () {
                 }
             });
         });
+    };
+    /**
+     * Set motor to specified power
+     * @param {string|number} port possible string values: `A`, `B`, `AB`, `C`, `D`.
+     * @param {number} [power] motor power percentage from `-100` to `100`. If a negative value is given
+     * rotation is counterclockwise.
+     */
+    LegoBoost.prototype.motorPowerCommand = function (port, power) {
+        if (!this.preCheck())
+            return;
+        this.hub.motorPowerCommand(port, power);
     };
     /**
      * Turn until there is no object in sensors sight

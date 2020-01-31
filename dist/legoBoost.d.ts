@@ -234,6 +234,13 @@ export default class LegoBoost {
      */
     driveUntil(distance?: number, wait?: boolean): Promise<any>;
     /**
+     * Set motor to specified power
+     * @param {string|number} port possible string values: `A`, `B`, `AB`, `C`, `D`.
+     * @param {number} [power] motor power percentage from `-100` to `100`. If a negative value is given
+     * rotation is counterclockwise.
+     */
+    motorPowerCommand(port: any, power: any): void;
+    /**
      * Turn until there is no object in sensors sight
      * @method LegoBoost#turnUntil
      * @param {number} [direction=1] direction to turn to. 1 (or any positive) is to the right and 0 (or any negative) is to the left.

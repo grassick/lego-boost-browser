@@ -28,9 +28,8 @@ declare namespace Buffer {
     var compare: (a: any, b: any) => 1 | -1 | 0;
     var isEncoding: (encoding: any) => boolean;
     var concat: (list: any, length: any) => any;
-    var byteLength: typeof byteLength;
+    var byteLength: (string: any, encoding: any) => any;
 }
 declare function SlowBuffer(length: any): any;
-declare function byteLength(string: any, encoding: any): any;
 export { Buffer, SlowBuffer, INSPECT_MAX_BYTES, kMaxLength };
 //# sourceMappingURL=buffer.d.ts.map
